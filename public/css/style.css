@@ -1,0 +1,188 @@
+/**
+ * Name : style.css
+ * Description: main style file for  todo app home page.
+ * Author: Barak Inbal.
+ * Created Date: 24.9.15
+ * Modified Date: 26.9.15
+ **/
+
+/** Tag Selectors **/
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif , Arial;
+    font-weight: 300;
+    background-color: #455a64;
+    color: #ffffff;
+    background-size: 100% 15px;
+    -webkit-background-size: 100% 15px ;
+    -moz-background-size: 100% 15px;
+    -ms-background-size: 100% 15px;
+    -o-background-size: 100% 15px;
+}
+
+
+input{
+    background: transparent;
+    font-size: 24px;
+    height: 50px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-bottom: 1px solid #eceff1;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+}
+input:focus{
+    outline: 0;
+    border-bottom: 1px solid #eceff1;
+    border-top: transparent;
+    border-left: transparent;
+    border-right: transparent;
+}
+input[type=checkbox]{
+    display:none;
+    padding: 10px 15px;
+}
+
+input[type=checkbox]+ label:before{
+    font-family: FontAwesome;
+    font-size: 32px;
+    display: inline-block;
+}
+
+
+input[type=checkbox] + label:before {
+    content: "\f096";
+}
+
+input[type=checkbox] + label:hover {
+    content: "\f046";
+    color: #69f0ae;
+}
+
+input[type=checkbox]:checked + label:before {
+    content: "\f046";
+}
+/** Class Selectors **/
+
+.container {
+    margin: 0 auto;
+    width: 95%;
+}
+
+.input-buttons {
+    padding: 0;
+    height: 50px;
+    border-bottom: 1px solid #eceff1;
+}
+
+.input-buttons > i{
+    float: right;
+    padding: 0 12px;
+    color: #eceff1;
+}
+
+.input-buttons > .fa-plus{
+    border-right: 1px solid #eceff1;
+}
+
+.todo-list-of-tasks{
+    list-style: none;
+    margin: 20px 0 50px;
+    padding: 0;
+}
+
+.todo-list-of-tasks > .todo-task{
+    background: #eceff1;
+    font-size: 20px;
+    list-style: none;
+    border-bottom: 1px dotted #455a64;
+    color: #455a64;
+    padding: 20px 130px 20px 15px;
+    position: relative;
+    white-space: normal;
+}
+
+.remove-task-btn{
+    padding: 0 10px;
+}
+
+.remove-task-btn:hover{
+    color: #ff5252;
+}
+
+.task-controls{
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
+
+.task-controls > a{
+    color: #455a64;
+}
+
+.task-controls > i{
+    padding: 10px 15px;
+}
+
+.task-controls > .fa-check{
+    border-right: 1px solid #455a64;
+}
+
+.task-controls > .fa-check:hover{
+    color: #69f0ae;
+}
+
+.checkbox-label{
+    border-right: 1px solid #455a64;
+    padding: 2px 15px ;
+}
+
+label.editing{
+    color: #455a64;
+    text-decoration: none;
+}
+
+label.completed {
+    color: #90a4ae;
+    text-decoration: line-through;
+}
+/** Id Selectors **/
+
+#add-task {
+    color: #eceff1;
+    margin-top: 1.2%;
+    padding: 2px 15px ;
+    border-right: 1px solid #ffffff;
+}
+
+#add-task:before{
+    font-size: 32px;
+    display: inline-block;
+}
+
+#add-task:hover{
+    color: #69f0ae;
+}
+
+#remove-task{
+    color: #eceff1;
+    padding: 0 10px
+}
+
+#remove-task:before{
+    font-size: 32px;
+    display: inline-block;
+}
+
+#remove-task:hover{
+    color: #ff5252;
+}
+
+#all-tasks , #completed-tasks , #pending-tasks{
+    position: relative;
+    display: inline-block;
+    font-size: 17px;
+    margin-right: 1%;
+}

@@ -1,0 +1,56 @@
+<!-- Name: home.html
+  -- Description: home template for todo app.
+  -- Author: Barak Inbal.
+  -- Date Created: 24.9.15
+  -- Date Modified: 26.9.15
+  -->
+<div class="page-header">
+    <div class="container">
+        <div class="row-fluid">
+            <h1>Todos List</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+            <form id="form" ng-submit="addTodoTask();">
+                <input id="main-task-input" type="text" class="col-xs-8 col-md-7 col-sm-6" ng-disable="isSaving();"
+                       ng-model="todoTaskToAdd.title" placeholder="Enter new task"  autofocus/>
+                <a ng-click="addTodoTask();" class="clear-text"><i id="add-task" class="fa fa-plus fa-2x"></i></a>
+                <a ng-click="removeTodoTask();" class="clear-text"><i  id="remove-task" class="fa fa-trash-o fa-2x"></i></a>
+            </form>
+   </div>
+
+   <div class="row">
+        <section id="main-section" class="todo-main" ng-show="todoTasksList.length">
+            <ul id="list-of-tasks" class="todo-list-of-tasks col-xs-8">
+                <li ng-repeat="task in todoTasksList track by $index" class="todo-task" >
+                    <div id="panel">
+                        <label id="task-label" ng-show="task != todoTaskToEdit" ng-class="{'completed': task.isDone, 'editing': task == todoTaskToEdit , 'pending': task}" ng-dblclick="editTodoTask(task)">{{task.title}}</label>
+                        <form id="secondary-task-input"  ng-show="task == todoTaskToEdit" ng-submit="saveTodoTaskChanges(task, 'submit')">
+                            <input class="task-edit"  ng-model="task.title" ng-escape="revertTodoTaskChanges(task)" ng-blur="saveTodoTaskChanges(task, 'blur')" ng-trim="false" ng-focus="task == todoTaskToEdit">
+                        </form>
+                        <span class="task-controls">
+                            <input id="{{ 'task-input-' + $index }}"  type="checkbox" ng-change="toggleTaskStatus(task,task.isDone)" ng-model="task.isDone" />
+                            <label for="{{ 'task-input-' + $index }}" class="checkbox-label" ></label>
+                            <a ng-click="removeTodoTask(task);" class="clear-text"><i  id="{{ 'remove-task-btn-' + $index }}" class="fa fa-trash-o fa-2x remove-task-btn"></i></a>
+                        </span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <div class="row"  ng-show="todoTasksList.length">
+
+          <span id="all-tasks" >Total:
+                <strong>{{remainingTasks + finishedTasks}}</strong>
+		  </span>
+          <span id="completed-tasks" >Completed:
+                <strong>{{finishedTasks}}</strong>
+		  </span>
+          <span id="pending-tasks" >Pending:
+                <strong>{{remainingTasks}}</strong>
+		  </span>
+    </div>
+</div>
